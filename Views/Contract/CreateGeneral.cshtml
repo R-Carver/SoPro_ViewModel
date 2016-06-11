@@ -1,0 +1,43 @@
+﻿@model WebApplication1.Models.Contract
+
+@{
+    ViewBag.Title = "Create2";
+}
+
+@Html.Partial("_MultiCreatePartial")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="flexWrapper">
+        <div class="innerWrapper leftInnerWrapper">
+            <h2>CreateGeneral</h2>
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Description)
+            @Html.HiddenFor(model => model.CoordinatorId)
+            @Html.HiddenFor(model => model.OwnerId)
+            @*Chr: Vertragstyp anlegen, *@
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContractKindId, "Vertragstyp", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ContractKindId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ContractKindId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*Chr: Vertragsart anlegen, *@
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContractTypeId, "Vertragsart", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ContractTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ContractTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_RightFormPartial", Model)
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

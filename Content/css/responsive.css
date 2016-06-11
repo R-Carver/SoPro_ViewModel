@@ -1,0 +1,20 @@
+﻿/*CSS RESPONIVE*/
+
+@media only screen and (max-width: 800px) {
+
+    #container{
+        padding: 0px;
+    }
+    
+    #breadcrumb{
+        display: none;
+    }
+
+    #sectionwrapper{
+        left: 0;
+        right: 0;
+    }
+    #loginUserTopLi{
+        display: none !important;
+    }
+}

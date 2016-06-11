@@ -1,0 +1,106 @@
+﻿@model WebApplication1.Models.Contract
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="innerWrapper">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Contract</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractOwner.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContractOwner.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Coordinator.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Coordinator.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Department.DepartmentName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Dispatcher.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Dispatcher.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UDepartment.DepartmentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UDepartment.DepartmentName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IntContractNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IntContractNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtContractNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtContractNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractBegin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContractBegin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractEnd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContractEnd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

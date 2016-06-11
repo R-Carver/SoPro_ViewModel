@@ -1,0 +1,11 @@
+﻿@model WebApplication1.Models.Contract
+
+@{
+    ViewBag.Title = "View";
+}
+
+@Html.DropDownListFor(model => model.Art, new SelectList(ViewBag.Vertragsarten, "Id", "Bezeichnung"),"Art waehlen", new { @class = "form-control"})
+
+
+<h2>View</h2>
+

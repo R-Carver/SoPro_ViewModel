@@ -1,0 +1,167 @@
+﻿html, body {
+    background: #c7c6c6;
+}
+
+body{
+    color: #333;
+}
+
+h1{
+    color: #000;
+}
+
+footer{
+    color:#FFF;
+}
+
+a:link{
+    color: #000;
+}
+
+a:visited{
+    color: #000;
+}
+
+a:hover{
+    color: #033;
+}
+
+/***********************Sidebar**********************/
+
+#sidebar-wrapper{
+    background: #FFF;
+}
+
+#sidebar{
+    background: #FFF;
+}
+
+.hover-class::after{
+    border-bottom: 1px solid #EEE;
+}
+
+.hover-class a:hover{
+    background: #DDD;
+}
+
+#menulinkbox ul li:nth-child(2) a{
+    background-image: url('../images/commercial/bzklsw_contract-manager_light.svg');
+    background-repeat: no-repeat;
+    background-size: auto 85%;
+    background-position: 20px;
+    color: transparent;
+}
+
+#sidebar-menu-item {
+    background-color: #FFF;
+    background-image: url('../images/material-design-icons/navigation/svg/design/ic_menu_24px.svg');
+}
+
+/****************************BREADCRUMB*********************/
+
+#breadcrumb{
+  /*box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5) inset !important;*/
+}
+
+#breadcrumb a{
+    color: #000;
+}
+
+#logout-item{
+    background-image: url('../images/custom/ic_logout_24px.svg');
+}
+
+/******************SECTIONWRAPPER***********/
+
+
+/***************CONTENT*****************/
+
+#content{
+  /*background-color: #FFF;*/
+}
+
+.innerWrapper{
+    background-color: white;
+}
+
+/***************FOOTER*****************/
+footer{
+  background-color: #999;
+}
+
+
+/****************CLASS STYLES****************/
+.applyBtn {
+    background-image: url('../images/material-design-icons/navigation/svg/production/ic_check_24px_dark.svg');
+}
+
+.cancelBtn {
+    background-image: url('../images/material-design-icons/navigation/svg/production/ic_close_24px_dark.svg');
+}
+
+/*******************************************************************/
+  /********************************Content*************************/
+  /***************************************************************/
+
+
+#content a {
+    color: #0053ff;
+}
+
+.actionBtn{
+    background-color: #DDD;
+}
+
+#createContractBtn{
+    
+    
+}
+
+.textBtn{
+        background-color: #1356FD;
+        color: white !important;
+}
+
+.textBtn:hover {
+    background-color: #1388FD;
+}
+
+.addBtn{
+    background-image: url('../images/material-design-icons/content/svg/production/ic_add_24px_dark.svg');
+}
+
+.editBtn {
+    background-image: url('../images/material-design-icons/image/svg/production/ic_edit_24px_dark.svg');
+}
+
+.deleteBtn {
+    /*background-color: #DDD;*/
+    background-image: url('../images/material-design-icons/action/svg/production/ic_delete_24px_dark.svg');
+}
+
+.detailsBtn {
+    /*background-color: #DDD;*/
+    background-image: url('../images/material-design-icons/action/svg/production/ic_description_24px_dark.svg');
+}
+
+  table{
+      color: black;
+  }
+
+  th, td{
+      border: 1px solid #FFF;
+  }
+  
+	/*  Define the background color for all the EVEN table columns  */
+	.table tr:nth-child(even){
+		background: #f7fafb;
+	}
+    /*  Define the background color for all the ODD table columns  */
+	.table tr:nth-child(odd){ 
+		background: #ecf4f6;
+	}
+    /*  Define the background color for first child  */
+	.table th{ 
+		background: #b5b5b5;
+        color: white;
+	}

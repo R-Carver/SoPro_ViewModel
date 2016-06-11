@@ -1,0 +1,15 @@
+﻿
+.ui-dialog-titlebar-close{
+    background: none;
+}
+
+.ui-dialog-titlebar-close .ui-icon{
+    background-position: 50% 50%;
+    background: none;
+    background-image: url('../../images/material-design-icons/navigation/svg/production/ic_check_24px_dark.svg');
+    background-size: auto 85%;
+}
+
+.ui-widget{  
+    font-family: 'Segoe UI', sans-serif !important;
+}

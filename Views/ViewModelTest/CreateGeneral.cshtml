@@ -1,0 +1,31 @@
+﻿@model WebApplication1.Models.ViewModels.ContractCreateGeneralViewModel
+@{
+    ViewBag.Title = "CreateGeneral";
+}
+
+<h2>CreateGeneral</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(model => model.ContractId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.ContractKinds)
+        @Html.DropDownListFor(m => m.ContractsKindId, Model.ContractKinds, "-Please select a contract kind-")
+       
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ContractTypes)
+        @Html.DropDownListFor(m => m.ContractsTypeId, Model.ContractTypes, "-Please select a contract type-")
+
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="CreateContract" type="submit" value="Weiter" class="textBtn" name="submit" />
+        </div>
+    </div>
+}
+

@@ -1,0 +1,96 @@
+﻿@model WebApplication1.Models.Contract
+
+@{
+    ViewBag.Title = "Pflichtfelder";
+}
+
+
+@Html.Partial("_MultiCreatePartial")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="flexWrapper">
+            <div class="innerWrapper leftInnerWrapper">
+                <p class="bold">Pflichtfelder zum Anlegen eines Vertrags.</p>
+                <span>Mit den Informationen dieser Seite wird ein </span><span class="bold">vorläufiger </span><span>Vertrag angelegt, auf den weiteren Seiten können Sie diesen vervollständigen.</span>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CoordinatorId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div id="coordinatorControl" style="display:none">
+                            @*Box pops up, if checkbox is checked*@
+                            @Html.DropDownList("ClientSelect", null, htmlAttributes: new { @class = "form-control", id = "clientCoordinatorId" })
+                        </div>
+                        @Html.DropDownList("CoordinatorId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CoordinatorId, "", new { @class = "text-danger" })
+
+                        @Html.CheckBox("manualCoordinator", new { autocomplete = "off" })
+                        @Html.Label("manuell")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OwnerId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.OwnerId, htmlAttributes: new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.OwnerName })
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_RightFormPartial", Model)
+        </div>
+    </div>
+}
+</div>
+
+<!--Oberhauser-->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/css/JQuery/calendar.css")
+
+    <script type="text/javascript">
+            /******************Coordinator********************/
+            $(function () {
+                $("#manualCoordinator").change(function () {
+                    if ($(this).is(":checked")) {
+                        $("#coordinatorControl").show();
+                    } else {
+                        $("#coordinatorControl").hide();
+                    }
+                });
+            });
+
+            //On ClientChangeCoordinator
+            $("#clientCoordinatorId").change(function () {
+                updateCoordinatorFromClient();
+                $("#manualCoordinator").attr('disabled', 'disabled');
+            });
+
+            function updateCoordinatorFromClient() {
+                var deffered = $.Deferred();
+                var selectedClientValue = $('#clientCoordinatorId :selected').text();
+                $.post('@Url.Action("GetJsonCoordinatorsFromClient", "Contract")', { client: selectedClientValue }, function (data) {
+                    // handle the server response here
+                    $("#CoordinatorId").empty();
+                    data = $.map(data, function (item, a) {
+                        return "<option value=" + item.Value + " " + (item.Selected ? "selected" : "") + ">" + item.Text + "</option>";
+                    });
+
+                    $("#CoordinatorId").html(data.join(""));
+                    deffered.resolve();
+                });
+                return deffered.promise();
+            }
+    </script>
+}
+

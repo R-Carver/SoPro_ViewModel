@@ -1,0 +1,125 @@
+﻿*{
+  margin: 0px;
+  padding: 0px;
+}
+
+html, body{
+  height: 100%;
+  min-height: 100%;
+  text-align: center;
+}
+
+body{
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  font-weight:200;
+  background-color: #CCC;
+  overflow: hidden;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+#login-wrapper{
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+
+}
+
+#login-wrapper *{
+     font-size: 25px;
+}
+
+.login-content{
+    padding-top: 109px;
+}
+
+.navbar-right{
+    background: #333;
+    overflow: hidden;
+}
+
+.navbar-right a{
+    display: inline-block;
+    color: white;
+    padding: 10px;
+    float: right;
+    border-left: 1px solid #999;
+}
+
+.textBtn{
+    /*color: black;
+    background-color: #AAA;
+    
+    font-weight: 500;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5) !important;*/
+    width: 100px;
+    height: 40px !important;
+    line-height: 40px !important;
+    font-size: 18px !important;
+    float: left;
+}
+.textBtn:hover {
+    background-color: #1388FD;
+}
+
+.loginCell{
+     text-align: center;
+}
+
+.loginCell *{
+     display: table-cell !important;
+}
+
+.loginForm{
+     margin: 0 auto;
+}
+
+.loginForm td{
+    /*top right bottom left*/
+     padding: 10px 20px 0px 10px;
+}
+
+#loginLogo {
+    display:block;
+    height: 75px;
+    background-image: url('../images/commercial/bzklsw_contract-manager_light.svg');
+    background-size: auto 90%;
+    overflow: visible;
+}
+
+.form-control{
+    width: 100%
+}
+
+.textBtn{
+    background-color: #1356FD;
+    color: white !important;
+}
+
+#RememberMe{
+    width: initial !important;
+}
+
+
+/**********************Responsive***************************/
+
+@media only screen and (max-width: 800px) {
+
+   .login-content{
+        padding-top: 20px;
+    }
+
+   #loginLogo{
+       width: 100%;
+       background-size: 80% auto;
+       height: 15%;
+   }
+}

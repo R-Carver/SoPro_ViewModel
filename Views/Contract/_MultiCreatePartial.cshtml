@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "MultiCreatePartial";
+}
+<div class="top-navigation innerWrapper">
+    <ul>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        <li><a href="@Url.Action("CreateInit", "Contract")" class="@(ViewContext.RouteData.Values["Action"].ToString()== "CreateInit" ? "active" : "")">Pflicht</a></li>
+        <li><span>|</span></li>
+        <li><a href="@Url.Action("CreateGeneral", "Contract")" class="@(ViewContext.RouteData.Values["Action"].ToString()== "CreateGeneral" ? "active" : "")">Allgemein</a></li>
+        <li><a href="@Url.Action("CreateDates", "Contract")" class="@(ViewContext.RouteData.Values["Action"].ToString()== "CreateDates" ? "active" : "")">Termine</a></li>
+        <li><a href="@Url.Action("CreateFiles", "Contract")" class="@(ViewContext.RouteData.Values["Action"].ToString()== "CreateFiles" ? "active" : "")">Dateien</a></li>
+    </ul>
+</div>

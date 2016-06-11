@@ -1,0 +1,100 @@
+﻿@model WebApplication1.Models.Contract
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="innerWrapper">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Contract</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractOwner.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContractOwner.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Coordinator.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Coordinator.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Department.DepartmentName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Dispatcher.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Dispatcher.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UDepartment.DepartmentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UDepartment.DepartmentName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IntContractNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IntContractNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtContractNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtContractNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractBegin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContractBegin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractEnd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContractEnd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

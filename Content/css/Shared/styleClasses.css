@@ -1,0 +1,159 @@
+﻿/***************StyleClasses****************/
+
+.iconStyle{
+      color: transparent !important;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      /*display: block;
+      float: left;
+      width: auto !important;
+      max-height: 20px;
+      max-width: 20px;*/
+}
+
+.actionBtn{
+      margin: 10px 0px 10px 10px;
+      display: block;
+      float: left;
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
+      border: none;
+  }
+
+.textBtn{
+    margin: 10px 0px 10px 10px;
+    padding: 0px 10px 0px 10px;
+    display: block;
+    height: 40px;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    vertical-align:middle;
+    line-height: 40px;
+    border-radius: 6px;
+    font-weight: 500;
+
+}
+
+.btnTableSize {
+    background-size: auto 90%;
+}
+
+.link{
+    color: #1356FD !important;
+    font-weight: 500; 
+}
+
+.link:hover{
+    color: #1399FD !important; 
+    text-decoration: underline;
+}
+
+.rightFloat{
+    float: right;
+}
+
+.scrollable{
+    overflow: auto;
+    width: 100%;
+}
+
+.top-navigation{
+    height: 40px;
+    border: 0;
+    padding: 10px 20px 0px 20px;
+}
+
+.top-navigation a , .top-navigation span{
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    overflow: hidden;
+    background-color: white;
+    height: 40px;
+    line-height: 40px;
+    /*padding: 10px 0 10px 0;*/
+    color: black !important;
+}
+
+.top-navigation ul li{
+    display: inline-block
+}
+
+.top-navigation a:hover, .top-navigation a:active, .top-navigation a:focus, .top-navigation.selected, .top-navigation ul .active {
+    box-sizing: border-box;
+    -moz-box-sizing : border-box;
+    border-bottom: solid #1356FD 4px;
+    
+    color: #1399FD !important;
+}
+
+.leftInnerWrapper{
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    flex: 2;
+}
+.rightInnerWrapper{
+    width: auto;
+    overflow: hidden;
+    flex: 1;
+}
+
+.flexWrapper{
+    display: flex;
+    height: 100%;
+}
+
+.bottomWrapper{
+    
+    position: relative;
+    overflow: hidden;
+}
+.rightInnerWrapper .textBtn{
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group{
+    padding: 10px 10px 10px 10px;
+}
+
+.control-label{
+    font-size: 22px;
+    font-weight: 600;
+    color: #1356FD;
+}
+
+.form-control{
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 2px solid #999;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: 300px;
+}
+
+/********Font*******/
+.bolder{
+    font-weight: bolder;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.semibold{
+    font-weight: 500;
+}
+
+.light{
+    font-weight: 300;
+}
+
+.lighter{
+    font-weight: lighter;
+}

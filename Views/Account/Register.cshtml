@@ -1,0 +1,106 @@
+﻿@model WebApplication1.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="login-content">
+        <h2>@ViewBag.Title</h2>
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <table class="loginForm">
+            <tr class="form-group">
+                <td>
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                </td>
+                <td class="col-md-10">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                </td>
+                <td class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                </td>
+                <td class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                </td>
+                <td class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </td>
+            </tr>
+            <!--Ober: Added Client and Department Field-->
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Client, new { @class = "col-md-2 control-label" })
+                </td>
+                <td>
+                    @Html.DropDownList("Client", null, "--- Select Client ---", htmlAttributes: new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Department, new { @class = "col-md-2 control-label" })
+                </td>
+                <td>
+                    @Html.DropDownList("Department", null, "--- Select Client ---", htmlAttributes: new { @class = "form-control" })<br />
+                    @Html.HiddenFor(m => m.DepartmentText)
+                </td>
+            </tr>
+            <!--Ober:end-->
+            <tr class="form-group">
+                <td class="loginCell" colspan="2">
+                    <input type="submit" class="textBtn" value="Register" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        // On ClientChange
+        $("#Client").change(function () {
+            updateDeparmentFromClient().done(function () {
+                $("#DepartmentText").val($("#Department :selected").text());;
+            });
+        });
+
+        function updateDeparmentFromClient() {
+            var deffered = $.Deferred();
+            var selectedClientValue = $('#Client :selected').text();
+            $.post('@Url.Action("GetJsonDepartmentsFromClient", "Account")', { client: selectedClientValue }, function (data) {
+                // handle the server response here
+                $("#Department").empty();
+                data = $.map(data, function (item, a) {
+                    return "<option value=" + item.Value + " " + (item.Selected ? "selected" : "") + ">" + item.Text + "</option>";
+                });
+
+                $("#Department").html(data.join(""));
+                deffered.resolve();
+            });
+            return deffered.promise();
+        }
+
+        $(function () {
+            $("#Department").change(function () {
+                $("#DepartmentText").val($("#Department :selected").text());
+            });
+        });
+    </script>
+}

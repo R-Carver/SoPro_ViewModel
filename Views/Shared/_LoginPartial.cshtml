@@ -1,0 +1,39 @@
+﻿<head>
+    @Styles.Render("~/Content/css/login.css")
+    @Styles.Render("~/Content/css/Shared/styleClasses.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+            <div id="header">
+                <ul class="navbar-right">
+                    <li>
+                        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            </div>
+        }
+
+        @Html.ActionLink("Go to app", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "textBtn" })
+    }
+    else
+    {
+        <div id="header">
+            <ul class="navbar-right">
+                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+        </div>
+        @RenderBody()
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>

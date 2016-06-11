@@ -1,0 +1,25 @@
+﻿#artikeltext li{
+	list-style-type:none;
+}
+
+
+#content a {
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+  th, td{
+      width: 100px;
+      vertical-align: middle;
+      white-space: nowrap;
+      text-align: left;
+      padding: 3px;
+      text-indent: 5px;
+  }
+
+    th:last-child, td:last-child {
+        /*width: 100%;*/
+    }

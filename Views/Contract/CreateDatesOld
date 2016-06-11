@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.Contract
+
+@{
+    ViewBag.Title = "Create2";
+}
+
+<h2>Create2</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Contract</h4>
+        
+        <p>
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+            @Html.ActionLink("Allgemein", "Index")
+            @Html.ActionLink("Termine", "Index")
+            @Html.ActionLink("Dateien", "Index")
+        </p>
+
+        <h2>CreateDates</h2>       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save and Back" formaction="/Contract/Index" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,138 @@
+﻿@model IEnumerable<WebApplication1.Models.Contract>
+
+@{
+    ViewBag.Title = "Startseite";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="flexWrapper">
+        <div class="innerWrapper">
+            @ViewBag.Title
+            <div class="scrollable">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IntContractNum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ExtContractNum)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContractOwner)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContractBegin)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContractEnd)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Coordinator)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Department)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Dispatcher)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UDepartment)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContractKind) @*ober: KindName*@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContractType) @*ober: TypeName*@
+                        </th>
+                        <th>
+                            <button id="select-column-btn">Select Columns</button> @*ober: SelectColumns*@
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IntContractNum)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExtContractNum)
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.Description, "Details", "Contract", new { id = item.Id }, new { @class = "link" })
+                                @*@Html.DisplayFor(modelItem => item.Description)*@
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContractOwner.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContractBegin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContractEnd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Coordinator.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dispatcher.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UDepartment.DepartmentName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContractKind.Description)    @*ober: KindValue*@
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContractType.Description)    @*ober: TypeValue*@
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        <div id="select-column-dialog" title="Basic dialog">
+            @Html.CheckBox("IntNo-cb")
+            @Html.DisplayNameFor(model => model.IntContractNum)<br />
+            @Html.CheckBox("ExtNo-cb")
+            @Html.DisplayNameFor(model => model.ExtContractNum)<br />
+            @Html.CheckBox("Description-cb", new { style = "display: none" })
+            @*@Html.DisplayNameFor(model => model.Description)<br />*@
+            @Html.CheckBox("Owner-cb")
+            @Html.DisplayNameFor(model => model.ContractOwner)<br />
+            @Html.CheckBox("ContractBeg-cb")
+            @Html.DisplayNameFor(model => model.ContractBegin)<br />
+            @Html.CheckBox("ContractEnd-cb")
+            @Html.DisplayNameFor(model => model.ContractEnd)<br />
+            @Html.CheckBox("Coordinator-cb")
+            @Html.DisplayNameFor(model => model.Coordinator)<br />
+            @Html.CheckBox("Department-cb")
+            @Html.DisplayNameFor(model => model.Department)<br />
+            @Html.CheckBox("Dispatcher-cb")
+            @Html.DisplayNameFor(model => model.Dispatcher)<br />
+            @Html.CheckBox("UDepartment-cb")
+            @Html.DisplayNameFor(model => model.UDepartment)<br />
+            @Html.CheckBox("Kind-cb")
+            @Html.DisplayNameFor(model => model.ContractKind)<br />
+            @Html.CheckBox("Type-cb")
+            @Html.DisplayNameFor(model => model.ContractType)<br />
+        </div>
+
+        @section Scripts{
+
+            @Styles.Render("~/Content/css/JQuery/dialog.css")
+            @Scripts.Render("~/Scripts/Layout/contractTableSelection.js")
+        }<!--end Ober-->
+    </div>
+}

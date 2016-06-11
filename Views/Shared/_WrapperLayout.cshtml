@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Contract Management</title>
+
+    <link id="light_css" rel="stylesheet" type="text/css" href="~/Content/css/templateLight.css" title="light" disabled="false" />
+    <link id="dark_css" rel="alternate stylesheet" type="text/css" href="~/Content/css/templateDark.css" title="dark" disabled="true" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/responsive.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    @using Microsoft.AspNet.Identity
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <div id="sidebar">
+                <nav id="sidebar-menu" class="menu-vertical">
+                    <div id="menulinkbox">
+                        <ul class="menu">
+                            <li><a href="javascript:switchSidebar()" id="sidebar-menu-item" class="iconStyle">Menu</a></li>
+                            <li class="hover-class">@Html.ActionLink("Startseite", "Index", "Home")</li>
+                            <li class="hover-class">@Html.ActionLink("Verträge", "Index", "Contract")</li>
+                            <li class="hover-class">@Html.ActionLink("Termine", "Contact", "Home")</li>
+                            @{
+                                if (this.User.IsInRole("Dispatcher"))
+                                {
+                                    <li class="hover-class">@Html.ActionLink("Dispatcher", "Index", "Contract")</li>
+                                }
+                            }
+                            @{
+                                if (this.User.IsInRole("Coordinator"))
+                                {
+                                    <li class="hover-class">@Html.ActionLink("Koordinator", "Index", "Contract")</li>
+                                }
+                            }
+                            @{
+                                if (this.User.IsInRole("Administrator"))
+                                {
+                                    <li class="hover-class">@Html.ActionLink("Administration", "Index", "Administration")</li>
+                                }
+                            }
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li class="hover-class">
+                                    @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", id = "loginUser" })
+                                </li>
+                            }
+                            <li class="hover-class">@Html.ActionLink("Info", "About", "Home")</li>
+                            <li class="hover-class">@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div id="container">
+            <div id="container-head">
+                <div id="breadcrumb">
+                    <a href="#" title="Breadcrumb">
+                        → @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()
+                    </a>
+                </div>
+                <div id="logout-area">
+                    <ul>
+                        <li id="loginUserTopLi">
+                            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", id = "loginUserTop" })
+                            <font> |</font>
+                        </li>
+                        <li>
+                            <a href="javascript:updateStyleSheet()" title="Color-Mode">●</a>
+                            <font>|</font>
+                        </li>
+                        <li>
+                            @Html.ActionLink("en", "Contact", "Home", new { title = "Language" })
+                            <font>|</font>
+                        </li>
+                        <li>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout-item", @class = "iconStyle", title = "Logout" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logout-item').submit()" class="iconStyle">Log Out</a>
+
+                            }
+                            @*@Html.ActionLink("Logout", "LogOff", "Account", new { id = "logout-item", @class = "iconStyle" })*@
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="sectionwrapper">
+                <section id="content">
+                    @RenderBody()
+                </section>
+                <div id="heightSetter">
+                </div>
+            </div>
+            <footer>
+                © Contract Manager Uni Augsburg
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/Scripts/Layout/style-switcher.js")
+    @Scripts.Render("~/Scripts/Layout/datepicker.js")
+    @Scripts.Render("~/Scripts/Layout/animation.js")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(function() {
+            $("#heightSetter").height($("#content").outerHeight());
+            console.log("Outer " + $("#content").outerHeight());
+            console.log($("#heightSetter").height());
+        });
+    </script>
+</body>
+</html>
